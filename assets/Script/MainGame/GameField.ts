@@ -174,7 +174,7 @@ export class GameField extends cc.Component {
   }
 
   private animateMoveCircle(Cell1, Cell2) {
-    if (Cell1 != null && Cell2!=null)
+    if (Cell1 == null || Cell2==null) return;
       cc.tween(Cell1._circle)
         .parallel(
           cc.tween().to(this.iter, { scale: 1 }),
@@ -454,47 +454,39 @@ export class GameField extends cc.Component {
     if (this.Cells[j][i] != null && this.Cells[jOne][iOne] != null && this.Cells[jTwo][iTwo] != null) {
       var tmpBool1 = CheckerBoolean.checkTwoBoolean(this.Cells[j][i].typeCell == 0, this.Cells[jOne][iOne].typeCell == 0);
       var tmpBool2 = CheckerBoolean.checkTwoBoolean(tmpBool1, this.Cells[jTwo][iTwo].typeCell == 0);
-      if (tmpBool2) {
-        tmpBool1 = CheckerBoolean.checkTwoBoolean(this.Cells[j][i].circleIsNotNull(), this.Cells[jOne][iOne].circleIsNotNull());
-        tmpBool2 = CheckerBoolean.checkTwoBoolean(tmpBool1, this.Cells[jTwo][iTwo].circleIsNotNull())
-        if (tmpBool2) {
-          var tmpBool3 = CheckerBoolean.EqualsTrheeObj(this.Cells[j][i]._circle.getComponent(Circle).CircleTypeColor,
-            this.Cells[jOne][iOne]._circle.getComponent(Circle).CircleTypeColor,
-            this.Cells[jTwo][iTwo]._circle.getComponent(Circle).CircleTypeColor);
-          if (tmpBool3) {
-
-
-            if (this.vertical) {
-              if (i < this.Cells[j].length - 4) {
-                this.createRainbowBall(i, j, iOne, jOne, iTwo, jTwo, jTwo, iTwo + 1, jTwo, iTwo + 2, 3);
-              }
-              if (i < this.Cells[j].length - 3 && this.goDestroyThreeInArow) {
-                this.createLightning(i, j, iOne, jOne, iTwo, jTwo, jTwo, iTwo + 1, 2);
-              }
-            }
-            if (this.horizont) {
-              if (j >= 4) {
-                this.createRainbowBall(i, j, iOne, jOne, iTwo, jTwo, jTwo - 1, iTwo, jTwo - 2, iTwo, 3);
-              }
-              if (j >= 3 && this.goDestroyThreeInArow) {
-                this.createLightning(i, j, iOne, jOne, iTwo, jTwo, jTwo - 1, iTwo, 1);
-              }
-            }
-            if (this.goDestroyThreeInArow) {
-              this.check3Circle(this.Cells[j][i], this.Cells[jOne][iOne], this.Cells[jTwo][iTwo]);
-              this.eventDestoyArow();
-
-            }
-
-
+      if (!tmpBool2) return;
+      tmpBool1 = CheckerBoolean.checkTwoBoolean(this.Cells[j][i].circleIsNotNull(), this.Cells[jOne][iOne].circleIsNotNull());
+      tmpBool2 = CheckerBoolean.checkTwoBoolean(tmpBool1, this.Cells[jTwo][iTwo].circleIsNotNull())
+      if (!tmpBool2) return; 
+      var tmpBool3 = CheckerBoolean.EqualsTrheeObj(this.Cells[j][i]._circle.getComponent(Circle).CircleTypeColor,
+      this.Cells[jOne][iOne]._circle.getComponent(Circle).CircleTypeColor,
+      this.Cells[jTwo][iTwo]._circle.getComponent(Circle).CircleTypeColor);
+      if (!tmpBool3) return;
+        if (this.vertical) {
+          if (i < this.Cells[j].length - 4) {
+            this.createRainbowBall(i, j, iOne, jOne, iTwo, jTwo, jTwo, iTwo + 1, jTwo, iTwo + 2, 3);
+          }
+          if (i < this.Cells[j].length - 3 && this.goDestroyThreeInArow) {
+            this.createLightning(i, j, iOne, jOne, iTwo, jTwo, jTwo, iTwo + 1, 2);
           }
         }
-      }
-    }
+        if (this.horizont) {
+          if (j >= 4) {
+            this.createRainbowBall(i, j, iOne, jOne, iTwo, jTwo, jTwo - 1, iTwo, jTwo - 2, iTwo, 3);
+          }
+          if (j >= 3 && this.goDestroyThreeInArow) {
+            this.createLightning(i, j, iOne, jOne, iTwo, jTwo, jTwo - 1, iTwo, 1);
+          }
+        }
+          if (this.goDestroyThreeInArow) {
+            this.check3Circle(this.Cells[j][i], this.Cells[jOne][iOne], this.Cells[jTwo][iTwo]);
+            this.eventDestoyArow();
+            }
+          }
   }
 
   private createRainbowBall(i, j, iOne, jOne, iTwo, jTwo, iThree, jThree, iFour, jFour, tipe) {
-    if (this.Cells[iThree][jThree] != null && this.Cells[iFour][jFour] != null) {
+    if (this.Cells[iThree][jThree] == null || this.Cells[iFour][jFour] == null) return;
       var bool1 = CheckerBoolean.checkTwoBoolean(this.Cells[iThree][jThree].typeCell == 0, this.Cells[iThree][jThree].circleIsNotNull());
       var bool2 = CheckerBoolean.checkTwoBoolean(this.Cells[iFour][jFour].typeCell == 0, this.Cells[iFour][jFour].circleIsNotNull());
       if (CheckerBoolean.checkTwoBoolean(bool1, bool2)) {
@@ -511,11 +503,10 @@ export class GameField extends cc.Component {
           this.eventDestoyArow();
         }
       }
-    }
   }
 
   private createLightning(i, j, iOne, jOne, iTwo, jTwo, iThree, jThree, tipe) {
-    if (this.Cells[iThree][jThree] != null)
+    if (this.Cells[iThree][jThree] == null) return;
       if (CheckerBoolean.checkTwoBoolean(this.Cells[iThree][jThree].typeCell == 0, this.Cells[iThree][jThree].circleIsNotNull()))
         if (CheckerBoolean.EqualsTwoObj(this.Cells[jTwo][iTwo]._circle.getComponent(Circle).CircleTypeColor,
           this.Cells[iThree][jThree]._circle.getComponent(Circle).CircleTypeColor)) {
@@ -530,8 +521,7 @@ export class GameField extends cc.Component {
   private destroyRainbowBall(Cell, circle) {
     for (var j = 0; j < this.Cells.length; j++) {
       for (var i = 0; i < this.Cells[j].length; i++) {
-        if (this.Cells[j][i].circleIsNotNull())
-          var currentCircle = this.Cells[j][i]._circle.getComponent(Circle);
+        if (this.Cells[j][i].circleIsNotNull()) var currentCircle = this.Cells[j][i]._circle.getComponent(Circle);
         else return;
         if (Cell != this.Cells[j][i] &&
           circle.CircleTypeColor === currentCircle.CircleTypeColor) {
@@ -546,14 +536,11 @@ export class GameField extends cc.Component {
   private destroyLightningVertical(Cell, circle) {
     var j = Cell.jcolumn;
     for (var i = 0; i < this.Cells[j].length; i++) {
-      if (Cell != this.Cells[j][i] && this.Cells[j][i].CellIsNotNull()) {
-        if (this.Cells[j][i].circleIsNotNull())
-          var currentCircle = this.Cells[j][i]._circle.getComponent(Circle);
+      if (Cell != this.Cells[j][i] || this.Cells[j][i].CellIsNotNull()) return;
+        if (this.Cells[j][i].circleIsNotNull()) var currentCircle = this.Cells[j][i]._circle.getComponent(Circle);
         else return;
-        if (circle.CircleType === currentCircle.CircleType)
-          this.animateDestroyCircle(this.Cells[j][i]);
+        if (circle.CircleType === currentCircle.CircleType) this.animateDestroyCircle(this.Cells[j][i]);
         else this.startCheckCircleForDestroy(this.Cells[j][i]);
-      }
     }
   }
 
@@ -561,16 +548,11 @@ export class GameField extends cc.Component {
     var i = Cell.irow;
     var thisCircle = circle.getComponent(Circle);
     for (var j = 0; j < this.Cells.length; j++) {
-      if (Cell != this.Cells[j][i] && this.Cells[j][i] != null) {
-        if (this.Cells[j][i].circleIsNotNull())
-          var currentCircle = this.Cells[j][i]._circle.getComponent(Circle);
-
-        if (currentCircle != null)
-          if (circle.CircleType === currentCircle.CircleType)
-            this.animateDestroyCircle(this.Cells[j][i]);
-          else
-            this.startCheckCircleForDestroy(this.Cells[j][i]);
-      }
+      if (Cell != this.Cells[j][i] || this.Cells[j][i] != null) return;
+      if (this.Cells[j][i].circleIsNotNull()) var currentCircle = this.Cells[j][i]._circle.getComponent(Circle);
+      if (currentCircle == null) return;
+      if (circle.CircleType === currentCircle.CircleType) this.animateDestroyCircle(this.Cells[j][i]);
+      else this.startCheckCircleForDestroy(this.Cells[j][i]);
     }
   }
 
@@ -639,28 +621,27 @@ export class GameField extends cc.Component {
       this.node.dispatchEvent(new cc.Event.EventCustom('setBlockTouch', true));
       this.node.dispatchEvent(new cc.Event.EventCustom('destroyCircles', true));
       this.destroyExisted = true;
-      cc.log("we here");
     }, this.iter + this.iter);
   }
 
   animationStart: boolean = true;
 
   private animateDestroyCircle(Cell) {
-    if (Cell != null)
-      cc.tween(Cell._circle)
+    if (Cell == null) return;
+    cc.tween(Cell._circle)
         .parallel(
           cc.tween().to(this.iter, { scale: 0 }),
           cc.tween().to(this.iter, {})
         )
         .call(() => {
-          if (Cell._circle != null) {
-            this.countCircle--;
-            this.getTypeDestroyCircle(Cell._circle.getComponent(Circle));
-            this.node.dispatchEvent(new cc.Event.EventCustom('setPoint', true));
-            Cell._circle.destroy();
-            Cell._circle = null;
-          }
-        }).start()
+          if (Cell._circle == null) return;
+          this.countCircle--;
+          this.getTypeDestroyCircle(Cell._circle.getComponent(Circle));
+          this.node.dispatchEvent(new cc.Event.EventCustom('setPoint', true));
+          Cell._circle.destroy();
+          Cell._circle = null;
+         
+    }).start()
   }
 
   getTypeDestroyCircle(circle) {

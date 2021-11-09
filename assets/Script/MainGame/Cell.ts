@@ -57,23 +57,22 @@ export class Cell extends cc.Component {
     countClick: number = 0;
 
     selectCircle() {
-        if (this._circle != null) {
-            this.countClick++;
-            if (this.countClick % 2 == 0) {
-                this.wasSelectCircle = false;
-                this.wasClick = false;
-                this.setNormalSize();
-                this.node.dispatchEvent(new cc.Event.EventCustom('wasTwoClickOnCell', true));
-            }
-            else {
-                this.wasSelectCircle = true;
-                this.node.dispatchEvent(new cc.Event.EventCustom('wasClickOnCell', true));
-                this._circle.setContentSize(this.node.getContentSize());
-            }
+        if (this._circle == null) return;
+        this.countClick++;
+        if (this.countClick % 2 == 0) {
+            this.wasSelectCircle = false;
+            this.wasClick = false;
+            this.setNormalSize();
+            this.node.dispatchEvent(new cc.Event.EventCustom('wasTwoClickOnCell', true));
+        } else {
+            this.wasSelectCircle = true;
+            this.node.dispatchEvent(new cc.Event.EventCustom('wasClickOnCell', true));
+            this._circle.setContentSize(this.node.getContentSize());
         }
     }
 
-    setNormalSize(){
+    setNormalSize() {
+        if (this._circle == null) return;
         var oldSize = cc.size(this.node.getContentSize());
         this._circle.setContentSize(oldSize.height - 15, oldSize.width - 15);
     }
@@ -93,13 +92,13 @@ export class Cell extends cc.Component {
 
     circleIsNotNull() {
         if (this._circle != null) return true;
-        else return false;
+        return false;
     }
 
 
     CellIsNotNull() {
         if (this != null) return true;
-        else return false;
+        return false;
     }
 
 }

@@ -97,23 +97,9 @@ export class GameController extends cc.Component {
             event.stopPropagation();
         });
 
-        this.node.on('setBlockTouch', this.setBlockTouch, this);
-        this.node.on('setBlockTouch', function (event) {
-            event.stopPropagation();
-        });
-        this.node.on('setUnBlockTouch', this.setUnBlockTouch, this);
-        this.node.on('setUnBlockTouch', function (event) {
-            event.stopPropagation();
-        });
+      
     }
 
-    private setBlockTouch() {
-        this.blockField.active=true;
-    }
-
-    private setUnBlockTouch() {
-        this.blockField.active=false;
-    }
 
     private setPoint() {
         this.allpoints += 1;
