@@ -10,3 +10,5 @@ Arhitecture:
 
 This beta version. I will rewrite the algorithm cause had some trouble with optimization.
 Need refactoring in the "GameFild.ts". 
+
+Test game: https://alexkutepov.github.io/Match3Cocos2D/
