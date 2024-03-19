@@ -35,21 +35,6 @@ Test game: https://alexkutepov.github.io/Match3-algorithm-TS-Cocos-creator/
 
 - (Latest release) [Download](https://github.com/AlexKutepov/Match3-algorithm-TS-Cocos-creator/releases/)
 
-# Match3 游戏
-<h1 align="center">
-  <br>
-   <a href="https://alexkutepov.github.io/Match3-algorithm-TS-Cocos-creator/"><img src="https://sun9-64.userapi.com/impg/oWoasmHHURTs52ra6VPKGf4Os6Wi80pBv9n_aQ/9jeO3ZnVEMs.jpg?size=124x121&quality=95&sign=0ffaeba0c59d11ff75a8f890c5058a6a&type=album" alt="Match3 game" width="200"></a>
-  <br>
-    Match3 游戏
-  <br>
-</h1>
-
-<p align="center">
-  <a href="#about">关于</a> •
-    <a href="#about">说明</a> •
-  <a href="#Download">下载</a> •
-
-</p>
 
 # Игра Match3
 <h1 align="center">
@@ -61,9 +46,9 @@ Test game: https://alexkutepov.github.io/Match3-algorithm-TS-Cocos-creator/
 </h1>
 
 <p align="center">
-  <a href="#about">О игре</a> •
-    <a href="#about">Инструкция</a> •
-  <a href="#Download">Скачать</a> •
+  <a href="#О игре">О игре</a> •
+    <a href="#Инструкция">Инструкция</a> •
+  <a href="#Скачать">Скачать</a> •
 
 </p>
 
@@ -89,7 +74,21 @@ TODO. Необходимо рефакторить в "GameFild.ts".
 
 - (Последний релиз) [Скачать](https://github.com/AlexKutepov/Match3-algorithm-TS-Cocos-creator/releases/)
 
+# Match3 游戏
+<h1 align="center">
+  <br>
+   <a href="https://alexkutepov.github.io/Match3-algorithm-TS-Cocos-creator/"><img src="https://sun9-64.userapi.com/impg/oWoasmHHURTs52ra6VPKGf4Os6Wi80pBv9n_aQ/9jeO3ZnVEMs.jpg?size=124x121&quality=95&sign=0ffaeba0c59d11ff75a8f890c5058a6a&type=album" alt="Match3 game" width="200"></a>
+  <br>
+    Match3 游戏
+  <br>
+</h1>
 
+<p align="center">
+  <a href="#说明">关于</a> •
+    <a href="#下载">说明</a> •
+  <a href="#下载">下载</a> •
+
+</p> 
 ## 关于
 
 尝试在 Cocos creator 中创建 Match3 游戏 (版本 2.4.3.) 并为其创建算法。
