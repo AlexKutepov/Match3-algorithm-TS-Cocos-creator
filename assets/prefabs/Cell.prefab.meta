@@ -1,8 +1,13 @@
 {
-  "ver": "1.2.9",
-  "uuid": "ba4adc22-0fb1-4780-86cd-a8ddf42a70b7",
-  "optimizationPolicy": "AUTO",
-  "asyncLoadAssets": false,
-  "readonly": false,
-  "subMetas": {}
+  "ver": "1.1.50",
+  "importer": "prefab",
+  "imported": true,
+  "uuid": "7b7a88ec-f379-439b-87dc-44fc7fd535f7",
+  "files": [
+    ".json"
+  ],
+  "subMetas": {},
+  "userData": {
+    "syncNodeName": "Cell"
+  }
 }
